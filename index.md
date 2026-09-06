@@ -3,14 +3,12 @@ layout: home
 title: CobbleAOI Docs
 ---
 
-# CobbleAOI Docs
-
 A searchable reference for the pack's KubeJS scripts, addon integrations, registries, fluids, gases, tags, and datapack systems.
 
 ## Start here
 
 - [Mod Register](modregister.html): KubeJS modes, registry categories, addon APIs, custom content, and ProbeJS workflow.
-- [KubeJS Addon Reference](kubejs-addons.html): Recipe and event examples for the installed addon mods.
+- [KubeJS Cheat Sheet](kubejs-addons.html): Recipe and event examples for the installed addon mods.
 
 ## Registry indexes
 
@@ -25,7 +23,7 @@ These pages contain the live ProbeJS results from this pack, grouped by namespac
 
 1. Search the relevant registry page for an exact ID.
 2. Check the Mod Register for the correct KubeJS mode and resource path.
-3. Check the Addon Reference for the mod-specific recipe or event builder.
+3. Check the KubeJS Cheat Sheet for the mod-specific recipe or event builder.
 4. Verify method signatures and object types with ProbeJS in the matching pack instance.
 
 ## Repository layout

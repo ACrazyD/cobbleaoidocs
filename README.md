@@ -20,8 +20,8 @@ The included `.github/workflows/pages.yml` deploys the site whenever `main` chan
 
 ## Included references
 
-- `modregister.md`: organized KubeJS and addon reference
-- `kubejs-addons.md`: earlier addon recipe and event guide
+- `modregister.md`: organized KubeJS reference
+- `kubejs-addons.md`: KubeJS recipe and event cheat sheet
 - `modregister-items.md`: live searchable item registry
 - `modregister-blocks.md`: live searchable block registry
 - `modregister-fluids.md`: live searchable fluid registry

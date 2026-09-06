@@ -303,6 +303,28 @@ a:hover {
 	color: #89dceb;
 }
 
+.back-to-top {
+	position: fixed;
+	left: 1rem;
+	bottom: 1rem;
+	z-index: 10;
+	padding: 0.55rem 0.8rem;
+	border: 1px solid #45475a;
+	border-radius: 4px;
+	color: #cdd6f4;
+	background: rgba(24, 24, 37, 0.94);
+	box-shadow: 0 8px 20px rgba(17, 17, 27, 0.35);
+	font-size: 0.82rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.back-to-top:hover {
+	border-color: var(--copper);
+	color: #11111b;
+	background: var(--copper);
+}
+
 @media screen and (max-width: 600px) {
 	.site-header .wrapper {
 		display: block;

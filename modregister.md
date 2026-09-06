@@ -567,4 +567,4 @@ Keep `modregister.md` focused on navigation, verified patterns, and important pa
 - [KubeJS documentation](https://kubejs.com/)
 - [KubeJS Create addon](https://kubejs.com/wiki/addons/create)
 - [ProbeJS project page](https://www.curseforge.com/minecraft/mc-mods/probejs)
-- [KubeJS addon reference](kubejs-addons.html)
+- [KubeJS cheat sheet](kubejs-addons.html)

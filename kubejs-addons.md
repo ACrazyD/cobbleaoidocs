@@ -1,9 +1,9 @@
 ---
 layout: page
-title: KubeJS Addon Reference
+title: KubeJS Cheat Sheet
 ---
 
-# KubeJS Addon Reference
+# KubeJS Cheat Sheet
 
 A quick-reference guide for common KubeJS addon recipe patterns used in this pack.
 
