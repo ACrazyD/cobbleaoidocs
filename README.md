@@ -1,4 +1,4 @@
-# Wild Coopers SMP Docs
+# CobbleAOI Docs
 
 This folder is ready to publish with GitHub Pages.
 

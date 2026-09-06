@@ -1,9 +1,9 @@
 ---
 layout: home
-title: Wild Coopers SMP Documentation
+title: CobbleAOI Docs
 ---
 
-# Wild Coopers SMP Documentation
+# CobbleAOI Docs
 
 A searchable reference for the pack's KubeJS scripts, addon integrations, registries, fluids, gases, tags, and datapack systems.
 
@@ -31,7 +31,7 @@ These pages contain the live ProbeJS results from this pack, grouped by namespac
 ## Repository layout
 
 ```text
-StrayDocs/
+CobbleAOI-Docs/
   index.md
   modregister.md
   kubejs-addons.md

@@ -548,7 +548,7 @@ If a custom namespace is used, replace both `kubejs` namespace components with t
 Current companion files for the live dumps:
 
 ```text
-StrayDocs/
+CobbleAOI-Docs/
   modregister.md
     modregister-items.md
     modregister-blocks.md
