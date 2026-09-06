@@ -93,17 +93,9 @@
   const items = [...wrapper.querySelectorAll('li')].filter((item) => namespacePattern.test(item.textContent));
   items.forEach((item) => {
     const value = item.textContent.trim();
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.className = 'registry-checkbox';
-    checkbox.value = value;
-    checkbox.addEventListener('change', () => {
-      if (checkbox.checked) selected.add(value);
-      else selected.delete(value);
-      updateStatus();
-    });
-    item.prepend(checkbox);
     item.dataset.registryId = value;
+    item.tabIndex = 0;
+    item.setAttribute('role', 'button');
   });
 
   const search = tools.querySelector('[data-registry-search], .registry-search');
@@ -115,6 +107,31 @@
     output.value = `[\n${[...selected].map((id) => `  "${id}"`).join(',\n')}\n]`;
     output.hidden = selected.size === 0;
   };
+
+  const toggleItem = (item) => {
+    const value = item.dataset.registryId;
+    if (selected.has(value)) {
+      selected.delete(value);
+      item.classList.remove('is-selected');
+    } else {
+      selected.add(value);
+      item.classList.add('is-selected');
+    }
+    updateStatus();
+  };
+
+  wrapper.addEventListener('click', (event) => {
+    const item = event.target.closest('li[data-registry-id]');
+    if (item) toggleItem(item);
+  });
+
+  wrapper.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const item = event.target.closest('li[data-registry-id]');
+    if (!item) return;
+    event.preventDefault();
+    toggleItem(item);
+  });
 
   search.addEventListener('input', () => {
     const query = search.value.trim().toLowerCase();
@@ -134,16 +151,15 @@
 
   tools.querySelector('[data-select-visible]').addEventListener('click', () => {
     items.filter((item) => !item.hidden).forEach((item) => {
-      const checkbox = item.querySelector('input');
-      checkbox.checked = true;
-      selected.add(checkbox.value);
+      selected.add(item.dataset.registryId);
+      item.classList.add('is-selected');
     });
     updateStatus();
   });
 
   tools.querySelector('[data-clear-selection]').addEventListener('click', () => {
     selected.clear();
-    items.forEach((item) => { item.querySelector('input').checked = false; });
+    items.forEach((item) => item.classList.remove('is-selected'));
     updateStatus();
   });
 

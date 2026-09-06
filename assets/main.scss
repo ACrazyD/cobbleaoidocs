@@ -353,6 +353,8 @@ a:hover {
 
 .registry-namespace {
 	margin: 1rem 0 1.5rem;
+	content-visibility: auto;
+	contain-intrinsic-size: 0 420px;
 }
 
 .registry-namespace h3 {
@@ -364,14 +366,25 @@ a:hover {
 	font-size: 1rem;
 }
 
-.registry-checkbox {
-	margin: 0 0.55rem 0 0;
-	accent-color: var(--copper);
-	vertical-align: middle;
-}
-
 .registry-namespace li {
 	list-style: none;
+	cursor: pointer;
+}
+
+.registry-namespace li::before {
+	content: "□";
+	display: inline-block;
+	width: 1.35rem;
+	color: var(--muted-ink);
+}
+
+.registry-namespace li.is-selected {
+	color: var(--copper-light);
+}
+
+.registry-namespace li.is-selected::before {
+	content: "■";
+	color: var(--copper);
 }
 
 .post-content .highlight,
