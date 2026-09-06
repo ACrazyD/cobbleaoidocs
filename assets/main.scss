@@ -71,6 +71,48 @@ body {
 	color: var(--copper-light);
 }
 
+.index-menu {
+	position: relative;
+	display: inline-block;
+}
+
+.index-menu summary {
+	list-style: none;
+	cursor: pointer;
+}
+
+.index-menu summary::-webkit-details-marker {
+	display: none;
+}
+
+.index-menu summary::after {
+	content: " +";
+	color: var(--copper);
+}
+
+.index-menu[open] summary::after {
+	content: " -";
+}
+
+.index-menu-panel {
+	position: absolute;
+	right: 0;
+	top: calc(100% + 0.7rem);
+	min-width: 9rem;
+	padding: 0.45rem;
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	background: var(--panel);
+	box-shadow: var(--shadow);
+}
+
+.index-menu-panel .page-link {
+	display: block;
+	padding: 0.35rem 0.55rem;
+	margin: 0;
+	white-space: nowrap;
+}
+
 .page-content {
 	padding: 3.5rem 0 5rem;
 }
@@ -342,6 +384,16 @@ a:hover {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.35rem 0.9rem;
+	}
+
+	.index-menu {
+		width: 100%;
+	}
+
+	.index-menu-panel {
+		position: static;
+		margin-top: 0.35rem;
+		box-shadow: none;
 	}
 
 	.site-nav .page-link {
