@@ -1,0 +1,12 @@
+<section class="registry-tools" data-registry-tools>
+  <div class="registry-tools-row">
+    <label class="registry-search-label" for="registry-search">Filter IDs</label>
+    <input id="registry-search" class="registry-search" type="search" placeholder="Search this index..." autocomplete="off">
+    <button class="registry-action" type="button" data-select-visible>Select visible</button>
+    <button class="registry-action" type="button" data-clear-selection>Clear</button>
+    <button class="registry-action registry-action-primary" type="button" data-copy-selection>Copy array</button>
+  </div>
+  <output class="registry-status" data-selection-status aria-live="polite">0 selected</output>
+  <textarea class="registry-output" data-selection-output aria-label="Selected IDs" readonly hidden></textarea>
+</section>
+<script src="{{ "/assets/registry.js" | relative_url }}" defer></script>

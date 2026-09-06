@@ -264,6 +264,116 @@ a:hover {
 	color: var(--muted-ink);
 }
 
+.registry-tools {
+	margin: 0 0 2rem;
+	padding: 1rem;
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	background: var(--panel);
+}
+
+.registry-tools-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.55rem;
+}
+
+.registry-search-label {
+	font-weight: 700;
+	color: var(--copper-light);
+}
+
+.registry-search {
+	min-width: min(20rem, 100%);
+	flex: 1 1 15rem;
+	padding: 0.55rem 0.7rem;
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	color: var(--ink);
+	background: var(--paper);
+}
+
+.registry-action {
+	padding: 0.55rem 0.7rem;
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	color: var(--ink);
+	background: var(--nav);
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.85rem;
+	font-weight: 700;
+}
+
+.registry-action:hover,
+.registry-action-primary {
+	border-color: var(--copper);
+	color: #11111b;
+	background: var(--copper);
+}
+
+.registry-status {
+	display: block;
+	margin-top: 0.55rem;
+	color: var(--muted-ink);
+	font-size: 0.85rem;
+}
+
+.registry-output {
+	display: block;
+	width: 100%;
+	min-height: 7rem;
+	margin-top: 0.75rem;
+	padding: 0.7rem;
+	border: 1px solid var(--line);
+	color: var(--ink);
+	background: var(--paper);
+	font: 0.85rem/1.5 "SFMono-Regular", Consolas, monospace;
+	resize: vertical;
+}
+
+.registry-groups {
+	margin-top: 2rem;
+}
+
+.registry-group {
+	margin: 2.5rem 0;
+	padding-top: 0.5rem;
+	border-top: 2px solid var(--copper);
+}
+
+.registry-group-heading {
+	margin: 0 0 1rem;
+	padding: 0;
+	border: 0;
+	color: var(--copper-light);
+	font-size: 1.8rem;
+}
+
+.registry-namespace {
+	margin: 1rem 0 1.5rem;
+}
+
+.registry-namespace h3 {
+	margin-bottom: 0.5rem;
+	padding-bottom: 0.25rem;
+	border-bottom: 1px solid var(--line);
+	color: var(--muted-ink);
+	font-family: "SFMono-Regular", Consolas, monospace;
+	font-size: 1rem;
+}
+
+.registry-checkbox {
+	margin: 0 0.55rem 0 0;
+	accent-color: var(--copper);
+	vertical-align: middle;
+}
+
+.registry-namespace li {
+	list-style: none;
+}
+
 .post-content .highlight,
 .home .highlight,
 .post-content .highlighter-rouge .highlight,
@@ -402,5 +512,15 @@ a:hover {
 
 	.page-content {
 		padding-top: 2rem;
+	}
+
+	.registry-tools-row {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.registry-search,
+	.registry-action {
+		width: 100%;
 	}
 }
