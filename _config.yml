@@ -1,7 +1,7 @@
 title: CobbleAOI Docs
 description: KubeJS, addon, registry, fluid, gas, and datapack references for the CobbleAOI pack.
-baseurl: ""
-url: ""
+baseurl: "/cobbleaoidocs"
+url: "https://acrazyd.github.io"
 markdown: kramdown
 theme: minima
 plugins:
