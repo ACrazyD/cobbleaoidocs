@@ -36,6 +36,15 @@
   };
 
   const allNames = sections.map(getNamespace);
+  const namespaceHeading = [...content.querySelectorAll(':scope > h2')]
+    .find((heading) => heading.textContent.trim() === 'Namespaces');
+  const namespaceOverview = [];
+  let namespaceElement = namespaceHeading;
+  while (namespaceElement && namespaceElement !== sections[0]) {
+    namespaceOverview.push(namespaceElement);
+    namespaceElement = namespaceElement.nextElementSibling;
+  }
+
   sections.forEach((section) => {
     const namespace = getNamespace(section);
     const primary = getPrimary(namespace, allNames);
@@ -109,6 +118,9 @@
 
   search.addEventListener('input', () => {
     const query = search.value.trim().toLowerCase();
+    namespaceOverview.forEach((element) => {
+      element.hidden = query !== '';
+    });
     items.forEach((item) => {
       item.hidden = query !== '' && !item.dataset.registryId.toLowerCase().includes(query);
     });
