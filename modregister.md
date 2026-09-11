@@ -24,15 +24,19 @@ Use the exact IDs reported by ProbeJS for this instance. Keep this file as the r
   - [Gases](#gases)
   - [Entities](#entities)
   - [Tags](#tags)
-- [Mod add-ons](#mod-add-ons)
-  - [Botany Pots](#botany-pots)
-  - [Create and Create Automation](#create-and-create-automation)
-  - [TFMG](#tfmg-the-factory-must-grow)
-  - [Powah](#powah)
-  - [Occultism](#occultism)
-  - [OriTech](#oritech)
-  - [Rechiseled](#rechiseled)
-  - [Replication](#replication)
+<li><a href="#mod-add-ons">Mod add-ons</a>
+    <ul>
+        <li><a href="#botany-pots">Botany Pots</a></li>
+        <li><a href="#create-and-create-automation">Create and Create Automation</a></li>
+        <li><a href="#tfmg-the-factory-must-grow">TFMG</a></li>
+        <li><a href="#powah">Powah</a></li>
+        <li><a href="#occultism">Occultism</a></li>
+        <li><a href="#oritech">OriTech</a></li>
+        <li><a href="#rechiseled">Rechiseled</a></li>
+        <li><a href="#replication">Replication</a></li>
+        <li><a href="#infinity-cells">Infinity Cells</a></li>
+    </ul>
+</li>
 - [Custom KubeJS content](#custom-kubejs-content)
   - [Custom items](#custom-items)
   - [Custom blocks](#custom-blocks)
@@ -484,6 +488,101 @@ ServerEvents.recipes(e => {
 ```
 
 Confirm the exact Replication method signatures against ProbeJS before adding a large batch.
+
+### Infinity Cells
+
+[Back to top](#mod-register)
+
+Infinity Cells adds infinite-storage AE2 cells that can hold an item, fluid, gas, energy type, or a group of several AE2 keys. Put these registrations in `kubejs/startup_scripts/`. Startup registry changes require a client restart after editing.
+
+Use `.itemType()` for an item, `.fluidType()` for a fluid, or `.type()` when you already have an AE key helper.
+
+```js
+StartupEvents.registry("item", event => {
+    event.create("infinity_iron_ingot_cell", "meinfinitycell:infinity_cell")
+        .itemType("minecraft:iron_ingot")
+
+    event.create("infinity_lava_cell", "meinfinitycell:infinity_cell")
+        .fluidType("minecraft:lava")
+
+    event.create("infinity_potion_cell", "meinfinitycell:infinity_cell")
+        .type(AEKeyHelper.item(
+            "minecraft:potion",
+            "[potion_contents={potion:\"minecraft:long_night_vision\"}]"
+        ))
+})
+```
+
+The second argument to `event.create()` selects the Infinity Cells item type. The item ID is the first argument and must be unique in the registry.
+
+#### Optional mod integrations
+
+These examples require the named addon mod in addition to Infinity Cells.
+
+Applied Flux:
+
+```js
+StartupEvents.registry("item", event => {
+    event.create("infinity_fe_cell", "meinfinitycell:infinity_cell")
+        .type(FluxKeyHelper.of(EnergyType.FE))
+})
+```
+
+Applied Mekanistics:
+
+```js
+StartupEvents.registry("item", event => {
+    event.create("infinity_oxygen_cell", "meinfinitycell:infinity_cell")
+        .type(MekanismKeyHelper.of("mekanism:oxygen"))
+
+    event.create("infinity_carbon_cell", "meinfinitycell:infinity_cell")
+        .type(MekanismKeyHelper.of("mekanism:carbon"))
+
+    event.create("infinity_yellow_cell", "meinfinitycell:infinity_cell")
+        .type(MekanismKeyHelper.of("mekanism:yellow"))
+
+    event.create("infinity_clean_osmium_cell", "meinfinitycell:infinity_cell")
+        .type(MekanismKeyHelper.of("mekanism:clean_osmium"))
+})
+```
+
+#### Using a Java-loaded AE key
+
+`Java.loadClass()` can expose an AE key supplied by another mod. This example uses the source key from Ars Énergistique.
+
+```js
+const $SourceKey = Java.loadClass("gripe._90.arseng.me.key.SourceKey")
+
+StartupEvents.registry("item", event => {
+    event.create("infinity_source_cell", "meinfinitycell:infinity_cell")
+        .type(() => $SourceKey.KEY)
+})
+```
+
+#### Multi-key infinity cells
+
+Use the `meinfinitycell:infinities_cell` type with `KeyList.create()` when one cell should store multiple AE keys. Add each item, fluid, or NBT-sensitive item key to the list.
+
+```js
+StartupEvents.registry("item", event => {
+    event.create("infinities_cell", "meinfinitycell:infinities_cell")
+        .setName(Text.literal("test"))
+        .setKeys(KeyList.create().adds(keys => {
+            keys.add(AEKeyHelper.item("minecraft:diamond"))
+            keys.add(AEKeyHelper.item("minecraft:iron_ingot"))
+            keys.add(AEKeyHelper.item("minecraft:gold_ingot"))
+            keys.add(AEKeyHelper.item("minecraft:copper_ingot"))
+            keys.add(AEKeyHelper.item("minecraft:stone"))
+            keys.add(AEKeyHelper.fluid("minecraft:water"))
+            keys.add(AEKeyHelper.item(
+                "minecraft:enchanted_book",
+                "[stored_enchantments={levels:{\"minecraft:luck_of_the_sea\":1}}]"
+            ))
+        }))
+})
+```
+
+`AEKeyHelper.item()` accepts an optional component/NBT string for variants such as potions and enchanted books. Use the exact component format expected by the installed Minecraft and AE2 version.
 
 ## Custom KubeJS content
 

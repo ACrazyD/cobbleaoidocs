@@ -9,6 +9,7 @@ A searchable reference for the pack's KubeJS scripts, addon integrations, regist
 
 - [Mod Register](modregister.html): KubeJS modes, registry categories, addon APIs, custom content, and ProbeJS workflow.
 - [KubeJS Cheat Sheet](kubejs-addons.html): Recipe and event examples for the installed addon mods.
+- [Infinity Cells](modregister.html#infinity-cells): Infinite AE2 cell registration examples and optional integrations.
 
 ## Registry indexes
 
